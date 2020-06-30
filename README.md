@@ -35,18 +35,7 @@ Dataset Description
 14.	previous   	number of times the customer was contacted prior to (or before) this campaign (numeric)
 15.	poutcome       	outcome of the previous marketing campaign (categorical: 'failure', 'nonexistent', 'success')
  
-
- 
-
-
-# Output variable (desired target):
-
-16	y	has the customer subscribed a term deposit? (binary: 'yes', 'no')
-Download the Sample Dataset.
-
- 
-
-Analysis tasks to be done-:
+ Analysis tasks to be done-:
 
 The data size is huge and the marketing team has asked you to perform the below analysis-
 
