@@ -1,0 +1,376 @@
+Microsoft Windows [Version 10.0.18363.900]
+(c) 2019 Microsoft Corporation. All rights reserved.
+
+C:\WINDOWS\system32>cd..
+
+C:\Windows>cd..
+
+C:\>cd.
+
+C:\>cd..
+
+C:\>cd spark-3.0.0-bin-hadoop2.7
+
+C:\spark-3.0.0-bin-hadoop2.7>dir/p
+ Volume in drive C has no label.
+ Volume Serial Number is B850-0C01
+
+ Directory of C:\spark-3.0.0-bin-hadoop2.7
+
+24-06-2020  14:53    <DIR>          .
+24-06-2020  14:53    <DIR>          ..
+24-06-2020  20:50    <DIR>          bin
+24-06-2020  14:52    <DIR>          conf
+24-06-2020  14:52    <DIR>          data
+24-06-2020  14:52    <DIR>          examples
+24-06-2020  14:52    <DIR>          jars
+24-06-2020  14:52    <DIR>          kubernetes
+06-06-2020  17:39            23,312 LICENSE
+24-06-2020  14:52    <DIR>          licenses
+06-06-2020  17:39            57,677 NOTICE
+24-06-2020  14:52    <DIR>          python
+24-06-2020  14:53    <DIR>          R
+06-06-2020  17:39             4,488 README.md
+06-06-2020  17:39               183 RELEASE
+24-06-2020  14:53    <DIR>          sbin
+24-06-2020  14:53    <DIR>          yarn
+               4 File(s)         85,660 bytes
+              13 Dir(s)  128,872,947,712 bytes free
+
+C:\spark-3.0.0-bin-hadoop2.7>cd bin
+
+C:\spark-3.0.0-bin-hadoop2.7\bin>dir/p
+ Volume in drive C has no label.
+ Volume Serial Number is B850-0C01
+
+ Directory of C:\spark-3.0.0-bin-hadoop2.7\bin
+
+24-06-2020  20:50    <DIR>          .
+24-06-2020  20:50    <DIR>          ..
+06-06-2020  17:39             1,089 beeline
+06-06-2020  17:39             1,064 beeline.cmd
+06-06-2020  17:39            10,952 docker-image-tool.sh
+06-06-2020  17:39             1,933 find-spark-home
+06-06-2020  17:39             2,681 find-spark-home.cmd
+06-06-2020  17:39             2,514 load-spark-env.cmd
+06-06-2020  17:39             2,526 load-spark-env.sh
+06-06-2020  17:39             2,632 pyspark
+06-06-2020  17:39             1,170 pyspark.cmd
+06-06-2020  17:39             1,540 pyspark2.cmd
+06-06-2020  17:39             1,030 run-example
+06-06-2020  17:39             1,223 run-example.cmd
+06-06-2020  17:39             3,539 spark-class
+06-06-2020  17:39             1,180 spark-class.cmd
+06-06-2020  17:39             2,817 spark-class2.cmd
+06-06-2020  17:39             3,122 spark-shell
+06-06-2020  17:39             1,178 spark-shell.cmd
+06-06-2020  17:39             1,818 spark-shell2.cmd
+06-06-2020  17:39             1,065 spark-sql
+06-06-2020  17:39             1,173 spark-sql.cmd
+06-06-2020  17:39             1,118 spark-sql2.cmd
+06-06-2020  17:39             1,040 spark-submit
+Press any key to continue . . .
+06-06-2020  17:39             1,180 spark-submit.cmd
+06-06-2020  17:39             1,155 spark-submit2.cmd
+06-06-2020  17:39             1,039 sparkR
+06-06-2020  17:39             1,168 sparkR.cmd
+06-06-2020  17:39             1,097 sparkR2.cmd
+17-06-2020  12:34           109,568 winutils.exe
+              28 File(s)        163,611 bytes
+               2 Dir(s)  128,873,050,112 bytes free
+
+C:\spark-3.0.0-bin-hadoop2.7\bin>spark-shell
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by org.apache.spark.unsafe.Platform (file:/C:/spark-3.0.0-bin-hadoop2.7/jars/spark-unsafe_2.12-3.0.0.jar) to constructor java.nio.DirectByteBuffer(long,int)
+WARNING: Please consider reporting this to the maintainers of org.apache.spark.unsafe.Platform
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+20/06/24 20:58:42 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+Spark context Web UI available at http://DESKTOP-PAD4POM.mshome.net:4040
+Spark context available as 'sc' (master = local[*], app id = local-1593012535208).
+Spark session available as 'spark'.
+Welcome to
+      ____              __
+     / __/__  ___ _____/ /__
+    _\ \/ _ \/ _ `/ __/  '_/
+   /___/ .__/\_,_/_/ /_/\_\   version 3.0.0
+      /_/
+
+Using Scala version 2.12.10 (Java HotSpot(TM) 64-Bit Server VM, Java 13.0.2)
+Type in expressions to have them evaluated.
+Type :help for more information.
+
+scala> val lines = sc.textFile("C:\Project Dataset.csv")
+<console>:1: error: invalid escape character
+       val lines = sc.textFile("C:\Project Dataset.csv")
+                                   ^
+
+scala> 20/06/24 20:59:10 WARN ProcfsMetricsGetter: Exception when trying to compute pagesize, as a result reporting of ProcessTree metrics is stopped
+
+
+scala> val lines = sc.textFile("C:/Project Dataset.csv")
+lines: org.apache.spark.rdd.RDD[String] = C:/Project Dataset.csv MapPartitionsRDD[1] at textFile at <console>:24
+
+scala> val bank = lines.map(x => x.split(";"))
+bank: org.apache.spark.rdd.RDD[Array[String]] = MapPartitionsRDD[2] at map at <console>:25
+
+scala> val bankf = bank.mapPartitionsWithIndex { (idx, iter) => if (idx == 0) iter.drop(1) else iter }
+bankf: org.apache.spark.rdd.RDD[Array[String]] = MapPartitionsRDD[3] at mapPartitionsWithIndex at <console>:25
+
+scala>
+
+scala> case class Bank(age:Int, job:String, marital:String, education:String, defaultn:String, balance:Int,
+     | housing:String, loan:String, contact:String, day:Int, month: String, duration:Int, campaign:Int, pdays:Int,
+     | previous:Int, poutcome:String, y:String)
+defined class Bank
+
+scala>
+
+scala> val bankrdd = bankf.map(
+     | x => Bank(x(0).replaceAll("\"","").toInt,
+     | x(1).replaceAll("\"","")
+     | ,x(2).replaceAll("\"","")
+     | ,x(3).replaceAll("\"","")
+     | ,x(4).replaceAll("\"","")
+     | ,x(5).replaceAll("\"","").toInt
+     | ,x(6).replaceAll("\"","")
+     | ,x(7).replaceAll("\"","")
+     | ,x(8).replaceAll("\"","")
+     | ,x(9).replaceAll("\"","").toInt
+     | ,x(10).replaceAll("\"","")
+     | ,x(11).replaceAll("\"","").toInt
+     | ,x(12).replaceAll("\"","").toInt
+     | ,x(13).replaceAll("\"","").toInt
+     | ,x(14).replaceAll("\"","").toInt
+     | ,x(15).replaceAll("\"","")
+     | ,x(16).replaceAll("\"","")
+     | )
+     | )
+bankrdd: org.apache.spark.rdd.RDD[Bank] = MapPartitionsRDD[4] at map at <console>:27
+
+scala>
+
+scala> val bankDF = bankrdd.toDF()
+bankDF: org.apache.spark.sql.DataFrame = [age: int, job: string ... 15 more fields]
+
+scala> bankDF.createOrReplaceTempView("bank")
+
+scala> val ssb=new org.apache.spark.sql.SparkSession.Builder()
+ssb: org.apache.spark.sql.SparkSession.Builder = org.apache.spark.sql.SparkSession$Builder@2034e91c
+
+scala>
+
+scala> val sparkSession=ssb.getOrCreate()
+sparkSession: org.apache.spark.sql.SparkSession = org.apache.spark.sql.SparkSession@4560e40b
+
+scala> val sqlCtx=sparkSession.sqlContext;
+sqlCtx: org.apache.spark.sql.SQLContext = org.apache.spark.sql.SQLContext@7779243b
+
+scala> val success = sqlCtx.sql("select (a.subscribed/b.total)*100 as success_percent from (select count(*) as subscribed from bank where y='yes') a,(select count(*) as total from bank) b").show()
++------------------+
+|   success_percent|
++------------------+
+|11.698480458295547|
++------------------+
+
+success: Unit = ()
+
+scala>
+
+scala>
+
+scala> val failure = sqlCtx.sql("select (a.not_subscribed/b.total)*100 as failure_percent from (select count(*) as not_subscribed from bank where y='no') a,(select count(*) as total from bank) b").show()
++-----------------+
+|  failure_percent|
++-----------------+
+|88.30151954170445|
++-----------------+
+
+failure: Unit = ()
+
+scala>
+
+scala> bankDF.select(max($"age")).show()
++--------+
+|max(age)|
++--------+
+|      95|
++--------+
+
+
+scala> bankDF.select(min($"age")).show()
++--------+
+|min(age)|
++--------+
+|      18|
++--------+
+
+
+scala> bankDF.select(avg($"age")).show()
++-----------------+
+|         avg(age)|
++-----------------+
+|40.93621021432837|
++-----------------+
+
+
+scala> bankDF.select(avg($"balance")).show()
++------------------+
+|      avg(balance)|
++------------------+
+|1362.2720576850766|
++------------------+
+
+
+scala> val median = sqlCtx.sql("SELECT percentile_approx(balance, 0.5) FROM bank").show()
++------------------------------------------------------+
+|percentile_approx(balance, CAST(0.5 AS DOUBLE), 10000)|
++------------------------------------------------------+
+|                                                   448|
++------------------------------------------------------+
+
+median: Unit = ()
+
+scala>
+
+scala>
+
+scala> val age = sqlCtx.sql("select age, count(*) as number from bank where y='yes' group by age order by number desc ").show()
++---+------+
+|age|number|
++---+------+
+| 32|   221|
+| 30|   217|
+| 33|   210|
+| 35|   209|
+| 31|   206|
+| 34|   198|
+| 36|   195|
+| 29|   171|
+| 37|   170|
+| 28|   162|
+| 38|   144|
+| 39|   143|
+| 27|   141|
+| 26|   134|
+| 41|   120|
+| 46|   118|
+| 40|   116|
+| 47|   113|
+| 25|   113|
+| 42|   111|
++---+------+
+only showing top 20 rows
+
+age: Unit = ()
+
+scala> val marital = sqlCtx.sql("select marital, count(*) as number from bank where y='yes' group by marital order by number desc ").show()
++--------+------+
+| marital|number|
++--------+------+
+| married|  2755|
+|  single|  1912|
+|divorced|   622|
++--------+------+
+
+marital: Unit = ()
+
+scala> val age_marital = sqlCtx.sql("select age, marital, count(*) as number from bank where y='yes' group by age,marital order by number desc ").show()
++---+-------+------+
+|age|marital|number|
++---+-------+------+
+| 30| single|   151|
+| 28| single|   138|
+| 29| single|   133|
+| 32| single|   124|
+| 26| single|   121|
+| 34|married|   118|
+| 31| single|   111|
+| 27| single|   110|
+| 35|married|   101|
+| 36|married|   100|
+| 25| single|    99|
+| 37|married|    98|
+| 33| single|    97|
+| 33|married|    97|
+| 32|married|    87|
+| 39|married|    87|
+| 38|married|    86|
+| 35| single|    84|
+| 47|married|    83|
+| 46|married|    80|
++---+-------+------+
+only showing top 20 rows
+
+age_marital: Unit = ()
+
+scala> import scala.reflect.runtime.universe
+import scala.reflect.runtime.universe
+
+scala> import org.apache.spark.SparkConf
+import org.apache.spark.SparkConf
+
+scala> import org.apache.spark.SparkContext
+import org.apache.spark.SparkContext
+
+scala> import org.apache.spark.sql.DataFrame
+import org.apache.spark.sql.DataFrame
+
+scala> import org.apache.spark.sql.SQLContext
+import org.apache.spark.sql.SQLContext
+
+scala> import org.apache.spark.sql.functions.mean
+import org.apache.spark.sql.functions.mean
+
+scala> val ageRDD = sqlCtx.udf.register("ageRDD",(age:Int) => {
+     | if (age < 20)
+     | "Teen"
+     | else if (age > 20 && age <= 32)
+     | "Young"
+     | else if (age > 33 && age <= 55)
+     | "Middle Aged"
+     | else
+     | "Old"
+     | })
+ageRDD: org.apache.spark.sql.expressions.UserDefinedFunction = SparkUserDefinedFunction($Lambda$4240/0x00000008021b6040@18dbe25d,StringType,List(Some(class[value[0]: int])),Some(ageRDD),true,true)
+
+scala>
+
+scala> val banknewDF = bankDF.withColumn("age",ageRDD(bankDF("age")))
+banknewDF: org.apache.spark.sql.DataFrame = [age: string, job: string ... 15 more fields]
+
+scala> banknewDF.createOrReplaceTempView("bank_new")
+
+scala>
+
+scala> sqlCtx.sqlval age_target = sqlCtx.sql("select age, count(*) as number from bank_new where y='yes' group by age order by number desc ").show()
+<console>:31: error: value sqlval is not a member of org.apache.spark.sql.SQLContext
+       sqlCtx.sqlval age_target = sqlCtx.sql("select age, count(*) as number from bank_new where y='yes' group by age order by number desc ").show()
+              ^
+<console>:32: error: value sqlval is not a member of org.apache.spark.sql.SQLContext
+       val $ires6 = sqlCtx.sqlval.age_target
+                           ^
+
+scala> val ageInd = new org.apache.spark.ml.feature.StringIndexer().setInputCol("age").setOutputCol("ageIndex")
+ageInd: org.apache.spark.ml.feature.StringIndexer = strIdx_126432da943a
+
+scala> var strIndModel = ageInd.fit(banknewDF)
+strIndModel: org.apache.spark.ml.feature.StringIndexerModel = StringIndexerModel: uid=strIdx_126432da943a, handleInvalid=error
+
+scala> strIndModel.transform(banknewDF).select("age","ageIndex").show(5)
++-----------+--------+
+|        age|ageIndex|
++-----------+--------+
+|        Old|     2.0|
+|Middle Aged|     0.0|
+|        Old|     2.0|
+|Middle Aged|     0.0|
+|        Old|     2.0|
++-----------+--------+
+only showing top 5 rows
+
+
+scala> 
